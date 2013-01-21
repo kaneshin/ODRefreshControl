@@ -48,12 +48,18 @@ static inline CGFloat lerp(CGFloat a, CGFloat b, CGFloat p)
 }
 
 - (id)initInScrollView:(UIScrollView *)scrollView {
+    _insetTop = 0.f;
+    return [self initInScrollView:scrollView activityIndicatorView:nil];
+}
+
+- (id)initInScrollView:(UIScrollView *)scrollView shiftTopOfInset:(CGFloat)insetTop {
+    _insetTop = insetTop;
     return [self initInScrollView:scrollView activityIndicatorView:nil];
 }
 
 - (id)initInScrollView:(UIScrollView *)scrollView activityIndicatorView:(UIView *)activity
 {
-    self = [super initWithFrame:CGRectMake(0, -(kTotalViewHeight + scrollView.contentInset.top), scrollView.frame.size.width, kTotalViewHeight)];
+    self = [super initWithFrame:CGRectMake(0, -(kTotalViewHeight + scrollView.contentInset.top - _insetTop), scrollView.frame.size.width, kTotalViewHeight)];
     
     if (self) {
         self.scrollView = scrollView;

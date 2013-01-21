@@ -23,6 +23,7 @@
     BOOL _didSetInset;
     BOOL _hasSectionHeaders;
     CGFloat _lastOffset;
+    CGFloat _insetTop;
 }
 
 @property (nonatomic, readonly) BOOL refreshing;
@@ -31,6 +32,7 @@
 @property (nonatomic, strong) UIColor *activityIndicatorViewColor; // iOS5 or more
 
 - (id)initInScrollView:(UIScrollView *)scrollView;
+- (id)initInScrollView:(UIScrollView *)scrollView shiftTopOfInset:(CGFloat)top;
 
 // use custom activity indicator
 - (id)initInScrollView:(UIScrollView *)scrollView activityIndicatorView:(UIView *)activity;
